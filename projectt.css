@@ -143,6 +143,13 @@ option{
     width: 100%;
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+    background: lightblue;
+    background: radial-gradient(white 30%, lightblue 70%);
+}
+
 .navbar ul{
     margin-right: 20px;
 }
@@ -150,6 +157,9 @@ option{
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
+}
+.shopping-cart{
+    padding: 10% 0;
 }
 .navbar ul li a{
     color: white;
