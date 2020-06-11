@@ -3,12 +3,7 @@ require 'login.php';
 
 require_once('php/component.php');
 require_once ('php/CreateDb.php');
-
 $database=new CreateDb("riseup","products");
-
-if(isset($_POST["add"])){
-print_r($_POST['product_id']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +50,7 @@ print_r($_POST['product_id']);
         <div class="eki"> <a href="registrationfrom.php" style="font-size: 12px; color: white;">
             <?php echo $_SESSION['fname']. ' '?><i class="fas fa-user"></i></a>
         </div>
-        <div class="ush"><a href="logout.php" style="font-size: 12px; color: white;">
+        <div class="ush"><a href="cart.php" style="font-size: 12px; color: white;">
                 <i class="fas fa-shopping-basket"></i></a>
         </div>
     </div>

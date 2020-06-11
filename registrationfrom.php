@@ -13,7 +13,86 @@ require 'db.php';
     <script src="https://kit.fontawesome.com/f237661d57.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+
+            $(".do_login").click(function(event) {
+                event.preventDefault();
+                $.ajax('authorization.php', {
+                    type: 'POST', // http method
+                    data: {
+                        email: $(".email").val(),
+                        password: $(".password").val()
+                    }, // data to submit
+                    accepts: 'application/json; charset=utf-8',
+                    success: function(data) {
+                        if (data.message == 'successs') {
+                            window.location.href = "index.php";
+                        }
+                    },
+                    error: function(errorData) {
+
+                        var msg = (errorData.responseJSON != null) ? errorData.responseJSON.errorMessage : '';
+                        $("#errormsg").text('Error: ' + msg + ', ' + errorData.status);
+
+                        $("#errormsg").show();
+                    }
+                });
+
+
+            });
+            </script>
+    <script>
+        $(document).ready(function(){
+            $('#exampleInputEmail1').bind('blur', function()
+            {
+                $.ajax({
+                        url:"main1.php",
+                        type:"POST",
+                        data:{
+                            email:$('#exampleInputEmail1').val()
+                        },
+                        dataType:'html',
+                        beforeSend:function()
+                        {
+                            $('#checkname').text('loading data');
+                        },
+                        success:function(data)
+                        {
+                            data=JSON.parse(data);
+                            for (var key in data)
+                            {
+                                if(data['Name']=='absent')
+                                {
+
+                                    $('#checkname').removeClass('green');
+                                    $('#checkname').addClass('red');
+                                    $("#checkname").text('Unregistered account');
+                                    $("#submitbtn").prop('disabled', true);
+                                    //document.querySelector('#submit1').disabled = true;
+                                    //$('submit[name="login"]').attr('disabled','true');
+
+                                }
+                                else
+                                {
+                                    $('#checkname').removeClass('red');
+                                    $('#checkname').addClass('green');
+                                    $("#checkname").text('Account exist');
+                                    $("#submitbtn']").prop('disabled', false);
+                                    //document.querySelector('#submit1').disabled = false;
+
+                                }
+                            }
+                        }
+                    }
+
+                )
+            })
+        })
+    </script>
+
+
 </head>
 
 <body>
@@ -42,7 +121,7 @@ require 'db.php';
         <div class="eki"><a href="registrationfrom.php" style="font-size: 12px; color: white;">
                 <i class="fas fa-user"></i></a>
         </div>
-        <div class="ush"><a href="#" style="font-size: 12px; color: white;">
+        <div class="ush"><a href="cart.php" style="font-size: 12px; color: white;">
                 <i class="fas fa-shopping-basket"></i></a>
         </div>
 
