@@ -10,7 +10,7 @@ if (isset($data['do_signup'])) {
     }
     if($data['password']!=$data['password_2']){
         $errors[]='Passwords are not same';
-}
+    }
 
 
     if (R::count('users', "email=?", array($data['email'] > 0))) {

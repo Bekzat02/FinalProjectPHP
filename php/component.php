@@ -1,21 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Document</title>
-</head>
-</html>
 <?php
 function component($productname,$productprice,$productimg,$productid){
     $element="         
                 <form action=\"index.php\" method=\"post\">
-          <div clas=\"card shadow\">
                 <div>
-                    <img src=\"$productimg\" style='width: 250px; height='250px'
+                    <img src=\"$productimg\" style='width: 250px; height=250px'
                           class=\"img-fluid card-img-top\">
                 </div>
                 <div class=\"card-body\">
@@ -27,7 +15,7 @@ function component($productname,$productprice,$productimg,$productid){
                         <i class=\"fas fa-star\"></i>
                         <i class=\"fas fa-star\"></i>
                     </h6>
-                    <p class=\"card-text\">
+                    <p>
                         Some quick example text to build on the card
                     </p>
                     <h5>
@@ -36,7 +24,6 @@ function component($productname,$productprice,$productimg,$productid){
                     <button type=\"submit\" name=\"add\" style=\"color: white\">Add cart <i  style=\"color: #2d3538\" class=\"fas fa-shopping-cart\"></i></button>
                     <input type='hidden' name='product_id' value='$productid'>
                 </div>
-            </div> 
             </form>
     ";
     echo $element;
@@ -48,7 +35,7 @@ function cartElement($productimg,$productname,$productprice,$productid){
                     <div class=\"border rounded\">
                         <div class=\"row bg-white\">
                             <div class=\"col-md-3 pl-0\">
-                                <img src='$productimg' alt=\"\">
+                                <img src='$productimg'>
                             </div>
                             <div class=\"col-md-6\">
                                 <h5 class=\"pt-2\">$productname</h5>
